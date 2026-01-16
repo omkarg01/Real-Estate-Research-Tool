@@ -31,7 +31,7 @@ def initialize_compnents():
 
 
     if not vector_store:
-        embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"trust_remote_code": True})
+        embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={"trust_remote_code": True, "device": "cpu"})
 
         vector_store = Chroma(persist_directory=str(VECTORSTORE_DIR), embedding_function=embeddings, collection_name=COLLECTION_NAME)
 

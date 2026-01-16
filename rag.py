@@ -40,15 +40,15 @@ def initialize_compnents():
 def process_urls(urls):
     print("Processing URLs...")
 
-    yield "Initializing components...✅"
+    yield "Initializing components... can take a few minutes ⏳"
     # print("Initializing components...")
     initialize_compnents()
 
-    yield "Resetting vector store...✅"
+    yield "Resetting vector store... ⏳"
     # print("Resetting vector store...✅")
     vector_store.reset_collection()
 
-    yield "Loading data from URLs...✅"
+    yield "Loading data from URLs... ⏳"
     # print("Loading data from URLs...")
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -61,11 +61,11 @@ def process_urls(urls):
     loader = UnstructuredURLLoader(urls=urls, headers=headers)
     data = loader.load()
 
-    yield "Splitting data into chunks...✅"
+    yield "Splitting data into chunks... ⏳"
     text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ".", " ", ""], chunk_size=CHUNK_SIZE, chunk_overlap=200)
     docs = text_splitter.split_documents(data)
 
-    yield "Creating vector store...✅"
+    yield "Creating vector store... ⏳"
     # print("Creating vector store...")
     ids = [str(uuid4()) for _ in range(len(docs))]
     vector_store.add_documents(docs, ids=ids)

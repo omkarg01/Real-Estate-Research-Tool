@@ -1,0 +1,10 @@
+python-dotenv
+streamlit
+unstructured
+tiktoken
+langchain-chroma
+langchain-groq==0.2.2
+langchain-community==0.3.13
+protobuf
+langchain==0.3.13
+langchain-huggingface
